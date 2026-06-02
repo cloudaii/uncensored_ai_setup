@@ -101,8 +101,34 @@ The framework initializes with a balanced 4K (4096) token limit designed for max
 ## 🔐 Privacy Framework
 
 • Zero Footprint: All conversational history, parameters, and application configurations are locked to the USB drive. No data writes to the host machine's drive.
+
+
 • No Host Alterations: Zero Windows Registry modifications, local system folder mutations, or trace files left behind.
+
+
 • Air-Gapped Operation: Operates flawlessly in full-isolation mode without requiring network access.
+
+
 • No Tracking: Features zero telemetry, no third-party cloud handshakes, and completely disabled tracking.
 
+
+## Important Operating Details
+
+• Manual Path Assignment: During the AnythingLLM installation dialog, you must manually guide the path target to the anythingllm folder sitting on the USB block to maintain application independence.
+
+
+• ​Cross-PC Switching: If a host migration triggers an unexpected "JavaScript Error," simply terminate the interface and rerun start-windows.bat. The tool will scrub past environment variables and resolve the issue dynamically.
+
+
+• ​Performance Expectations: The system utilizes host CPU execution targets. Processing cycles range between 10–30 seconds based on the client hardware specifications.
+
+
+• ​Hardware Benchmarks: 12B engines (NemoMix) require a minimum baseline of 8 GB RAM. 7B variants run comfortably on 6 GB RAM.
+
+
+• ​Always use Safely Remove Hardware / Eject on your host system before physically pulling your USB drive to prevent partition corruption.
+
+## License
+
+This project is open-source software distributed under the terms of the MIT License.
 
