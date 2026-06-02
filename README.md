@@ -1,134 +1,171 @@
-# uncensored_ai_setup
+# 🔒 Portable Uncensored AI — Runs Entirely from a USB Drive
 
-# DME — Portable Uncensored AI 🔒
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-A completely private, portable, and uncensored AI assistant configured to run 100% locally from a USB flash drive. Zero internet connection required after the initial setup. No data ever leaves your drive. Cross-platform compatibility for Windows, macOS, and Linux.
-Now featuring **multi-model support**! Select from 6 pre-configured AI models or integrate your own custom builds.
-📺 **[Watch the Complete Video Tutorial Here](your-video-link-here)**
----
-## ⚡ Supported Models
-During the setup process, an interactive menu will allow you to select and deploy your preferred model(s):
+A **fully private, portable, uncensored AI assistant** that runs 100% from a USB flash drive. No internet needed after setup. No data leaves the USB. Works on **Windows**, **Mac**, and **Linux**.
 
-| # | Model Name | File Size | Classification | Optimal Use Case |
-| :--- | :--- | :--- | :--- | :--- |
-| **1** | **NemoMix Unleashed 12B** | ~7.0 GB | 🔓 UNCENSORED | ⭐ *Recommended* — Premier uncensored quality |
-| **2** | **Dolphin 2.9 Llama 3 8B** | ~4.9 GB | 🔓 UNCENSORED | Classic versatile, unfiltered performance |
-| **3** | **Mistral 7B Instruct v0.3** | ~4.1 GB | 🔒 STANDARD | Exceptional logical reasoning & programming |
-| **4** | **Qwen 2.5 7B Instruct** | ~4.7 GB | 🔒 STANDARD | Robust multilingual processing capabilities |
-| **5** | **Llama 3.2 3B Instruct** | ~2.0 GB | 🔒 STANDARD | Ultra-lightweight — optimized for legacy hardware |
-| **6** | **Phi-3.5 Mini 3.8B** | ~2.2 GB | 🔒 STANDARD | Compact profile with strong analytical output |
-| **C** | **Custom GGUF** | Varies | 🎨 CUSTOM | Load any compatible HuggingFace model |
+**Now with multi-model support!** Choose from 6 curated AI models or bring your own.
 
-> 🔓 **UNCENSORED:** Completely unfiltered outputs; bypasses standard guardrails.  
-> 🔒 **STANDARD:** Operates under standard safety guidelines and alignment.
----
-## 💾 Hardware & Storage Allocation Guide
+## 📺 Watch the Tutorial
 
-| Selected Presets | Minimum Storage | Recommended Storage |
-| :--- | :--- | :--- |
-| **1 Lightweight Model (3B/3.8B)** | 16 GB | 16 GB |
-| **1 Recommended Model (NemoMix 12B)** | 16 GB | 32 GB |
-| **2 to 3 Models Co-existing** | 32 GB | 64 GB |
-| **Full Suite (All 6 Presets ~25 GB)** | 64 GB | 64 GB |
+[![Portable AI USB Tutorial](https://img.youtube.com/vi/cqrMfO6AZRU/maxresdefault.jpg)](https://youtu.be/cqrMfO6AZRU)
 
----
-## 🚀 Initial Environment Setup (One-Time Only)
-### Prerequisites
-* A USB flash drive with a minimum of 16 GB free space (32 GB+ highly recommended).
-* **Important:** Format the USB drive file system to **exFAT** for universal compatibility (Windows, Mac, Linux).
-* An active internet connection (required solely for initial asset downloads).
-### Implementation Steps
-1. Clone or download this repository and transfer **all** files directly into the root directory of your USB drive.
-2. Launch the deployment script:
-   * **Windows:** Double-click `install.bat`
-3. Select your desired AI engine(s) via the interactive console prompt.
-4. **AnythingLLM Guided Configuration:**
-   * The AnythingLLM installer UI will launch automatically.
-   * ⚠️ **CRITICAL:** When prompted for the *Install Location*, select **Browse** and point the target path explicitly to the `anythingllm` folder located on your USB drive. 
-5. Allow the installation wizard to complete, then close the setup window. 
-Your self-contained portable environment is now operational!
-### Troubleshooting Interrupted Downloads
-If a specific network drop causes a model download to fail, the installer will automatically attempt a retry. If it completely fails:
-1. Extract the direct HuggingFace download URL displayed in the terminal logs.
-2. Manually download the `.gguf` file via your browser.
-3. Drop the downloaded `.gguf` asset directly into the `models/` directory on your USB.
-4. Restart `install.bat` — it will immediately index your manual asset and skip the download phase.
----
-## 🔧 Advanced Configurations
-### 🔄 Expanding Your Model Library
-To add extra models post-installation, simply run `install.bat` again. The system automatically scans your environment and will only fetch newly requested models while retaining current data intact.
-### 🎨 Custom HuggingFace Integrations
-To deploy a model outside our curated presets, select **Option C** during installation and paste the direct link to any valid `.gguf` payload from HuggingFace.
-### 🗄️ Adjusting Ollama Token Limits & Context Size
-The framework initializes with a balanced 4K (4096) token limit designed for maximum performance across general hardware configurations. To scale this capacity:
-1. Navigate to `anythingllm_data/storage` on your USB drive.
-2. Open the `.env` configuration file using any text editor.
-3. Locate `OLLAMA_MODEL_TOKEN_LIMIT=4096` and update the value (e.g., `8192` for an 8K context window).
-4. Save adjustments and restart your environment using the OS-specific launcher script (`start-windows.bat`, `start-mac.command`, or `start-linux.sh`).
-> 📝 **Note:** Running `install.bat` or `install.sh` again will reset this environment property to `4096`. On macOS, recycling the environment through `start-mac.command` preserves your modified `.env` values seamlessly.
----
-## ▶️ Execution & Daily Usage
-### 🪟 Windows Environments
-1. Double-click `start-windows.bat` on your USB drive.
-   * *Improved Portability:* The execution layer dynamically flushes outdated path caches across host devices, completely eliminating standard "JavaScript runtime errors."
-2. The AnythingLLM interface will launch seamlessly. 
-3. **Model Selection:** Head to `Settings` ➡️ `LLM` ➡️ select your downloaded model from the dropdown.
-4. Keep the host command prompt window active while interacting with the AI. 
-5. To close down your session safely, focus on the terminal and press any key.
-### 🍎 macOS Environments
-1. Double-click `start-mac.command` from the USB directory.
-   * *First Launch:* The wrapper will spend ~2 minutes provisioning the local macOS core.
-2. The AnythingLLM chat ecosystem will initialize automatically.
-3. To safely unmount resources, tap `ENTER` inside the terminal window.
-### 🐧 Linux Environments
-1. Initialize a terminal terminal path matching your USB root folder.
-2. Modify file execution permissions and launch the diagnostic checker:
-```bash
-   chmod +x start-linux.sh preflight-check.sh install.sh install-core.sh
-```
-```
+
+## ⚡ Available Models
+
+During installation, you'll choose which model(s) to download:
+
+| # | Model | Size | Label | Best For |
+|---|-------|------|-------|----------|
+| 1 | **NemoMix Unleashed 12B** | ~7.0 GB | 🔓 UNCENSORED | ⭐ Recommended — best quality uncensored |
+| 2 | **Dolphin 2.9 Llama 3 8B** | ~4.9 GB | 🔓 UNCENSORED | Classic uncensored all-rounder |
+| 3 | **Mistral 7B Instruct v0.3** | ~4.1 GB | 🔒 STANDARD | Strong reasoning & coding |
+| 4 | **Qwen 2.5 7B Instruct** | ~4.7 GB | 🔒 STANDARD | Great multilingual support |
+| 5 | **Llama 3.2 3B Instruct** | ~2.0 GB | 🔒 STANDARD | Lightweight — fast on old PCs |
+| 6 | **Phi-3.5 Mini 3.8B** | ~2.2 GB | 🔒 STANDARD | Lightweight — good reasoning |
+| C | **Custom GGUF** | Varies | 🎨 CUSTOM | Bring your own HuggingFace model |
+
+> **🔓 UNCENSORED** = No content filters, answers everything  
+> **🔒 STANDARD** = Normal safety guidelines apply
+
+## 🚀 Setup (One Time Only)
+
+### What You Need
+- A USB flash drive with **at least 16 GB** of free space (32 GB recommended for multiple models)
+- Format the USB as **exFAT** (works on Windows, Mac, and Linux)
+- An internet connection for the initial download
+
+### Steps
+
+1. **Download this repo** and copy ALL files to your USB drive
+2. **Double-click `install.bat`** on the USB drive
+3. **Choose your model(s)** from the interactive menu
+4. **Interactive AnythingLLM Setup**:
+   - The AnythingLLM installer will open automatically.
+   - **IMPORTANT**: When asked for the "Install Location", click **Browse** and select the `anythingllm` folder on your USB drive.
+   - Wait for it to finish, then close the installer window.
+5. **Done!** Your portable AI is ready to use.
+
+### ⚠️ If a Model Download Fails
+
+The installer automatically retries failed downloads. If it still fails:
+
+1. **Download the model manually** from the HuggingFace resolved link shown in the console error.
+2. **Place the .gguf file** into the `models\` folder on your USB.
+3. **Re-run `install.bat`** — it will detect the file and skip the download.
+
+### 🔄 Adding More Models Later
+
+Just **re-run `install.bat`** and select additional models. Already-downloaded models are automatically skipped.
+
+### 🎨 Custom Models
+
+Want a model not on the list? During install, choose option **C** and paste any direct `.gguf` download link from HuggingFace. The installer handles the rest!
+
+### 🗄️ Configuring Ollama Token Limit / Context Size
+
+By default, the installer configures Ollama with a 4K token limit for optimal performance on most PCs. If you want to adjust this, follow these steps after install script has finished running:
+
+1. Open this folder on your USB drive. `anythingllm_data/storage`
+2. Open the `.env` file in a text editor.
+3. Find the line that says `OLLAMA_MODEL_TOKEN_LIMIT=4096` and change `4096` to your desired token limit (e.g., `8192` for 8K tokens).
+4. Save the file and restart the AI using the launcher script `start-windows.bat` or `start-mac.command` or `start-linux.sh`.
+5. Incase if you re-run the installer script `install.bat` or `install.sh` it will reset the token limit back to 4096, so you will need to change it again in the `.env` file.
+6. For mac, you may re-run the `start-mac.command` script and it will not overwrite the token limit in the `.env` file, so you can just restart the AI using this script after changing the token limit in the `.env` file.
+
+## ▶️ How to Use
+
+### On Windows
+- Double-click **`start-windows.bat`** on the USB drive.
+- **Improved Portability**: The launcher now automatically clears old path caches. This allows you to move between different computers without "JavaScript errors."
+- The AnythingLLM chat window will open automatically.
+- **Switch between models** in AnythingLLM: Settings → LLM → select your model.
+- Keep the black terminal window open while chatting.
+- Press any key in the terminal to safely shut down.
+
+### On Mac
+- Double-click **`start-mac.command`** on the USB drive.
+- First time: It will automatically download the Mac engine (~2 min).
+- The AnythingLLM window will open automatically.
+- Press ENTER in the terminal to safely shut down.
+
+### 🐧 On Linux
+
+1. Open a terminal on your USB drive.
+2. Run the launcher:
+   make it executable first:
+   ```bash
+   chmod +x start-linux.sh preflight-check.sh install.sh install-core.sh 
+   ```
+   ```bash
    bash preflight-check.sh
+   ```
+
+3. The preflight script checks for everything and executes the install script.
+4. open **ANYTHING LLM** folder and open the appImage there
+4. **Switch between models**: Settings → LLM → select your model.
+5. Keep the terminal open while chatting.
+6. Press **Enter** in the terminal to safely shut down.
+
+---
+
+## 🔐 Privacy
+
+- **All chats & settings stay on the USB** — never saved to the host PC.
+- No registry keys or local files are left behind.
+- Works completely offline after initial setup.
+- No telemetry, no cloud, no tracking.
+
+## 📁 USB Drive Structure (After Setup) - WINDOWS & MAC
+
+```
+USB Drive/
+├── install.bat             ← Run this first (one time only)
+├── install-core.ps1        ← Setup script (called by install.bat)
+├── start-windows.bat       ← Windows launcher (with auto-cache clearing)
+├── start-mac.command       ← Mac launcher
+├── ollama/                 ← AI engine (Windows)
+├── models/                 ← AI model files (.gguf) & configs
+│   ├── installed-models.txt    ← List of installed models
+│   └── *.gguf                  ← Model weights
+├── anythingllm/            ← Your AI Interface (installed here)
+├── installer_data/         ← Temporary installer files (auto-cleaned)
+└── anythingllm_data/       ← Your chats & settings (100% portable!)
+```
+## 📁 USB Drive Structure (After Setup) - LINUX
+
+```
+USB Drive/
+├── install.sh             ← Linux / Mac installer
+├── preflight-check.sh     ← Linux USB drive health check [ run this first ] 
+├── install-core.sh        ← Core setup logic (called by install.sh)
+└── start-linux.sh         ← Linux launcher
+├── ollama/                 ← AI engine (Windows)
+├── models/                 ← AI model files (.gguf) & configs
+│   ├── installed-models.txt    ← List of installed models
+│   └── *.gguf                  ← Model weights
+├── anythingllm/            ← Your AI Interface (installed here)
+├── installer_data/         ← Temporary installer files (auto-cleaned)
+└── anythingllm_data/       ← Your chats & settings (100% portable!)
 ```
 
-3. The preflight script automatically builds   system checks and launches setup.
+---
 
-4. Navigate inside the anythingllm subdirectory and execute the AppImage file.
+## 💾 USB Size Guide
 
-5. Select your engine via Settings ➡️ LLM.
+| Models | Minimum USB | Recommended USB |
+|--------|-------------|-----------------|
+| 1 lightweight (3B/3.8B) | 16 GB | 16 GB |
+| 1 recommended (NemoMix 12B) | 16 GB | 32 GB |
+| 2-3 models | 32 GB | 64 GB |
+| All 6 presets (~25 GB) | 64 GB | 64 GB |
 
-6. Terminate runtime sessions cleanly by pressing Enter inside the active terminal.
+## ⚠️ Important Notes
 
-## 🔐 Privacy Framework
+- **Manual Path Selection**: When installing AnythingLLM, you must manually select the `anythingllm` folder on the USB to keep it portable.
+- **Moving between PCs**: If you see a "JavaScript Error" on a new PC, just close it and run `start-windows.bat` again. The script will automatically wipe the old PC's cached paths and fix the run.
+- **Performance**: The AI runs on your **CPU** — responses take 10–30 seconds depending on hardware.
+- **RAM**: 12B models (NemoMix) need **at least 8 GB RAM**. 7B models need **at least 6 GB RAM**.
+- Always **safely eject** the USB before unplugging.
 
-• Zero Footprint: All conversational history, parameters, and application configurations are locked to the USB drive. No data writes to the host machine's drive.
+## 📜 License
 
-
-• No Host Alterations: Zero Windows Registry modifications, local system folder mutations, or trace files left behind.
-
-
-• Air-Gapped Operation: Operates flawlessly in full-isolation mode without requiring network access.
-
-
-• No Tracking: Features zero telemetry, no third-party cloud handshakes, and completely disabled tracking.
-
-
-## Important Operating Details
-
-• Manual Path Assignment: During the AnythingLLM installation dialog, you must manually guide the path target to the anythingllm folder sitting on the USB block to maintain application independence.
-
-
-• ​Cross-PC Switching: If a host migration triggers an unexpected "JavaScript Error," simply terminate the interface and rerun start-windows.bat. The tool will scrub past environment variables and resolve the issue dynamically.
-
-
-• ​Performance Expectations: The system utilizes host CPU execution targets. Processing cycles range between 10–30 seconds based on the client hardware specifications.
-
-
-• ​Hardware Benchmarks: 12B engines (NemoMix) require a minimum baseline of 8 GB RAM. 7B variants run comfortably on 6 GB RAM.
-
-
-• ​Always use Safely Remove Hardware / Eject on your host system before physically pulling your USB drive to prevent partition corruption.
-
-## License
-
-This project is open-source software distributed under the terms of the MIT License.
-
+MIT License — See [LICENSE](LICENSE) for details.
