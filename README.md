@@ -49,3 +49,41 @@ chmod +x start-linux.sh preflight-check.sh install.sh install-core.sh
 bash preflight-check.sh
 ```
 
+1. Run the AnythingLLM AppImage from the `anythingllm/` folder.
+2. Press **Enter** in the terminal window to safely close when finished.
+
+---
+
+## 📁 Drive Structure & Requirements
+
+```text
+USB Drive/
+├── install.bat / install.sh   ← Installer files
+├── start-windows.bat          ← Windows launcher
+├── start-mac.command          ← Mac launcher
+├── start-linux.sh             ← Linux launcher
+├── ollama/ / models/          ← AI engine & downloaded GGUF files
+└── anythingllm/ / _data/      ← Interface app & private chat logs
+```
+
+## Hardware Requirements
+Depending on the model size you choose to run, ensure your system meets the following minimum or recommended hardware specifications.
+
+| Configuration | Recommended Model | Minimum RAM | Recommended RAM | Hardware Speed / Performance |
+| :--- | :--- | :--- | :--- | :--- |
+| **Lightweight** | 3B to 3.8B models | **4 GB** | 16 GB | Runs acceptably on standard CPU |
+| **Recommended** | 7B to 12B models | **8 GB** | 32 GB | 10–30s generation latency |
+
+> ⚠️ **Note:** For optimal performance and lower latency, running models on a dedicated GPU is highly recommended, though lightweight models are fully capable of running on CPU-only setups.
+
+
+## Essential Rules
+
+• Portability: You must change the AnythingLLM path to your USB directory during setup.
+
+
+• Errors: If switching PCs causes a "JavaScript Error", close it and rerun the launcher script.
+
+
+• Eject: Always safely eject the USB drive before physical removal to prevent corruption.
+
